@@ -71,11 +71,99 @@
                                 <div class="widget-title">
                                     <a data-parent="#collapse-group" href="#collapseGTwo" data-toggle="collapse">
                                       <span><i class='bx bx-package icon-cli'></i></span>
-                                      <h5 style="padding-left: 28px">Produtos</h5>
+                                      <h5 style="padding-left: 28px">Marcas</h5>
                                     </a>
                                 </div>
                             </div>
                             <div class="collapse accordion-body" id="collapseGTwo">
+                                <div class="widget-content">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <label>
+                                                    <input name="vMarca" class="marcar" type="checkbox" checked="checked" value="1" />
+                                                    <span class="lbl"> Visualizar Marca</span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    <input name="aMarca" class="marcar" type="checkbox" value="1" />
+                                                    <span class="lbl"> Adicionar Marca</span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    <input name="eMarca" class="marcar" type="checkbox" value="1" />
+                                                    <span class="lbl"> Editar Marca</span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    <input name="dMarca" class="marcar" type="checkbox" value="1" />
+                                                    <span class="lbl"> Excluir Marca</span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group widget-box">
+                            <div class="accordion-heading">
+                                <div class="widget-title">
+                                    <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse">
+                                      <span><i class='bx bx-package icon-cli'></i></span>
+                                      <h5 style="padding-left: 28px">Equipamentos</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="collapse accordion-body" id="collapseGThree">
+                                <div class="widget-content">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <label>
+                                                    <input name="vEquipamento" class="equipamento" type="checkbox" checked="checked" value="1" />
+                                                    <span class="lbl"> Visualizar Equipamento</span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    <input name="aEquipamento" class="equipamento" type="checkbox" value="1" />
+                                                    <span class="lbl"> Adicionar Equipamento</span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    <input name="eEquipamento" class="equipamento" type="checkbox" value="1" />
+                                                    <span class="lbl"> Editar Equipamento</span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    <input name="dEquipamento" class="equipamento" type="checkbox" value="1" />
+                                                    <span class="lbl"> Excluir Equipamento</span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group widget-box">
+                            <div class="accordion-heading">
+                                <div class="widget-title">
+                                    <a data-parent="#collapse-group" href="#collapseGFour" data-toggle="collapse">
+                                      <span><i class='bx bx-package icon-cli'></i></span>
+                                      <h5 style="padding-left: 28px">Produtos</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="collapse accordion-body" id="collapseGFour">
                                 <div class="widget-content">
                                     <table class="table table-bordered">
                                         <tbody>
@@ -113,13 +201,13 @@
                         <div class="accordion-group widget-box">
                             <div class="accordion-heading">
                                 <div class="widget-title">
-                                    <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse">
+                                    <a data-parent="#collapse-group" href="#collapseGFive" data-toggle="collapse">
                                       <span><i class='bx bx-stopwatch icon-cli'></i></span>
                                       <h5 style="padding-left: 28px">Serviços</h5>
                                     </a>
                                 </div>
                             </div>
-                            <div class="collapse accordion-body" id="collapseGThree">
+                            <div class="collapse accordion-body" id="collapseGFive">
                                 <div class="widget-content">
                                     <table class="table table-bordered">
                                         <tbody>

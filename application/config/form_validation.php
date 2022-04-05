@@ -26,6 +26,11 @@ $config = [
             'rules' => 'trim|valid_email',
         ],
         [
+            'field' => 'senha',
+            'label' => 'Senha',
+            'rules' => 'trim',
+        ],
+        [
             'field' => 'rua',
             'label' => 'Rua',
             'rules' => 'trim',
@@ -69,6 +74,23 @@ $config = [
         ],
         [
             'field' => 'preco',
+            'label' => '',
+            'rules' => 'required|trim',
+        ]
+    ],
+    'marcas' => [
+        [
+            'field' => 'marca',
+            'label' => 'Marca',
+            'rules' => 'required|trim',
+        ],
+        [
+            'field' => 'situacao',
+            'label' => '',
+            'rules' => 'trim',
+        ],
+        [
+            'field' => 'cadastro',
             'label' => '',
             'rules' => 'required|trim',
         ]
