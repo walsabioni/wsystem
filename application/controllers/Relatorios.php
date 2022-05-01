@@ -781,8 +781,8 @@ class Relatorios extends MY_Controller
         $totalValorDesconto = 0;
         foreach ($vendas as $venda) {
             $totalVendas += $isXls
-                ? floatval($venda['valorTotal'])
-                : floatval($venda->valorTotal);
+                ? floatval($venda['total_produto'])
+                : floatval($venda->total_produto);
             $totalDesconto += $isXls
                 ? floatval($venda['desconto'])
                 : floatval($venda->desconto);
@@ -801,7 +801,7 @@ class Relatorios extends MY_Controller
                     'cliente' => $item['nomeCliente'],
                     'vendedor' => $item['nome'],
                     'data' => $item['dataVenda'],
-                    'total' => $item['valorTotal'] ?: 0,
+                    'total' => $item['total_produto'] ?: 0,
                     'totalDesconto' => $item['valor_desconto'] ?: 0,
                     'desconto' => $item['desconto'] ?: 0,
                 ];
@@ -875,8 +875,8 @@ class Relatorios extends MY_Controller
         $totalValorDesconto = 0;
         foreach ($vendas as $venda) {
             $totalVendas += $isXls
-                ? floatval($venda['valorTotal'])
-                : floatval($venda->valorTotal);
+                ? floatval($venda['total_produto'])
+                : floatval($venda->total_produto);
             $totalDesconto += $isXls
                 ? floatval($venda['desconto'])
                 : floatval($venda->desconto);
@@ -895,7 +895,7 @@ class Relatorios extends MY_Controller
                     'cliente' => $item['nomeCliente'],
                     'vendedor' => $item['nome'],
                     'data' => $item['dataVenda'],
-                    'total' => $item['valorTotal'] ?: 0,
+                    'total' => $item['total_produto'] ?: 0,
                     'totalDesconto' => $item['valor_desconto'] ?: 0,
                     'desconto' => $item['desconto'] ?: 0,
                 ];
