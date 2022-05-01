@@ -199,8 +199,6 @@ class Vendas_model extends CI_Model
         }
 
         $pix = (new StaticPayload())
-            ->applyValidCharacters()
-            ->applyUppercase()
             ->setPixKey(getPixKeyType($pixKey), $pixKey)
             ->setMerchantName($emitente->nome, true)
             ->setMerchantCity($emitente->cidade, true)
