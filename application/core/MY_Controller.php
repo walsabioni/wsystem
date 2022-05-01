@@ -2,7 +2,7 @@
 
 class MY_Controller extends CI_Controller
 {
-    public $data = [
+    protected $data = [
         'configuration' => [
             'per_page' => 10,
             'next_link' => 'Próxima',
@@ -31,37 +31,51 @@ class MY_Controller extends CI_Controller
             'control_baixa' => '0',
             'control_editos' => '1',
             'control_datatable' => '1',
+            'control_edit_vendas' => '1',
             'pix_key' => '',
+            'email_automatico' => false,
         ],
     ];
 
     public function __construct()
     {
         parent::__construct();
-
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('login');
-        }
-        $this->load_configuration();
-    }
-
-    private function load_configuration()
-    {
         $this->CI = &get_instance();
-        $this->CI->load->database();
-        $configuracoes = $this->CI->db->get('configuracoes')->result();
 
-        foreach ($configuracoes as $c) {
-            $this->data['configuration'][$c->config] = $c->valor;
+        if ($this->CI->router->class !== 'login') {
+            $this->checkSession();
         }
+        $this->loadConfiguration();
     }
 
-    public function layout()
+    protected function layout()
     {
         // load views
         $this->load->view('tema/topo', $this->data);
         $this->load->view('tema/menu');
         $this->load->view('tema/conteudo');
         $this->load->view('tema/rodape');
+    }
+
+    protected function userIsLoged()
+    {
+        return (session_id()) && ($this->session->userdata('logado'));
+    }
+
+    protected function checkSession()
+    {
+        if (!$this->userIsLoged()) {
+            redirect('login');
+        }
+    }
+
+    protected function loadConfiguration()
+    {
+        $this->CI->load->database();
+        $configuracoes = $this->CI->db->get('configuracoes')->result();
+
+        foreach ($configuracoes as $c) {
+            $this->data['configuration'][$c->config] = $c->valor;
+        }
     }
 }

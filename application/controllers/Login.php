@@ -1,6 +1,6 @@
 <?php
 
-class Login extends CI_Controller
+class Login extends MY_Controller
 {
     public function __construct()
     {
@@ -10,12 +10,13 @@ class Login extends CI_Controller
 
     public function index()
     {
-        $this->load->view('mapos/login');
+        $this->load->view('mapos/login', $this->data);
     }
 
     public function sair()
     {
         $this->session->sess_destroy();
+
         return redirect($_SERVER['HTTP_REFERER']);
     }
 
@@ -68,7 +69,7 @@ class Login extends CI_Controller
     private function chk_date($data_banco)
     {
         $data_banco = new DateTime($data_banco);
-        $data_hoje = new DateTime("now");
+        $data_hoje = new DateTime('now');
 
         return $data_banco < $data_hoje;
     }
