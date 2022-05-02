@@ -2,7 +2,7 @@
 
 class MY_Controller extends CI_Controller
 {
-    protected $data = [
+    public $data = [
         'configuration' => [
             'per_page' => 10,
             'next_link' => 'Próxima',
