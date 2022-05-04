@@ -155,8 +155,8 @@ class Mapos extends MY_Controller
 
     public function do_upload_user()
     {
-        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
-            $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para configurar Usuario.');
             redirect(base_url());
         }
 
