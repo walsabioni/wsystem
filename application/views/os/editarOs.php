@@ -93,40 +93,40 @@
                                             <label for="status">Status<span class="required">*</span></label>
                                             <select class="span12" name="status" id="status" value="">
                                                 <option <?php if ($result->status == 'Orçamento') {
-                        echo 'selected';
-                    } ?> value="Orçamento">Orçamento
+                                                            echo 'selected';
+                                                        } ?> value="Orçamento">Orçamento
                                                 </option>
                                                 <option <?php if ($result->status == 'Aberto') {
-                        echo 'selected';
-                    } ?> value="Aberto">Aberto
+                                                            echo 'selected';
+                                                        } ?> value="Aberto">Aberto
                                                 </option>
                                                 <option <?php if ($result->status == 'Faturado') {
-                        echo 'selected';
-                    } ?> value="Faturado">Faturado
+                                                            echo 'selected';
+                                                        } ?> value="Faturado">Faturado
                                                 </option>
                                                 <option <?php if ($result->status == 'Negociação') {
-                        echo 'selected';
-                    } ?> value="Negociação">Negociação
+                                                            echo 'selected';
+                                                        } ?> value="Negociação">Negociação
                                                 </option>
                                                 <option <?php if ($result->status == 'Em Andamento') {
-                        echo 'selected';
-                    } ?> value="Em Andamento">Em Andamento
+                                                            echo 'selected';
+                                                        } ?> value="Em Andamento">Em Andamento
                                                 </option>
                                                 <option <?php if ($result->status == 'Finalizado') {
-                        echo 'selected';
-                    } ?> value="Finalizado">Finalizado
+                                                            echo 'selected';
+                                                        } ?> value="Finalizado">Finalizado
                                                 </option>
                                                 <option <?php if ($result->status == 'Cancelado') {
-                        echo 'selected';
-                    } ?> value="Cancelado">Cancelado
+                                                            echo 'selected';
+                                                        } ?> value="Cancelado">Cancelado
                                                 </option>
                                                 <option <?php if ($result->status == 'Aguardando Peças') {
-                        echo 'selected';
-                    } ?> value="Aguardando Peças">Aguardando Peças
+                                                            echo 'selected';
+                                                        } ?> value="Aguardando Peças">Aguardando Peças
                                                 </option>
                                                 <option <?php if ($result->status == 'Aprovado') {
-                        echo 'selected';
-                    } ?> value="Aprovado">Aprovado
+                                                            echo 'selected';
+                                                        } ?> value="Aprovado">Aprovado
                                                 </option>
                                             </select>
                                         </div>
@@ -205,10 +205,18 @@
                                             <input class="span12 money" id="valorTotal" name="valorTotal" type="text" data-affixes-stay="true" data-thousands="" data-decimal="." name="valor" value="<?php echo number_format($totals + $total, 2, '.', ''); ?>" readonly />
                                         </div>
                                     </div>
+                                    <div class="span1">
+                                        <label for="">Tipo Desc.</label>
+                                        <select style="width: 4em;" name="tipoDesconto" id="tipoDesconto">
+                                            <option value="real">R$</option>
+                                            <option value="porcento" <?=$result->tipo_desconto == "porcento" ? "selected" : "" ?>>%</option>
+                                        </select>
+                                        <strong><span style="color: red" id="errorAlert"></span></strong>
+                                    </div>
                                     <div class="span3">
                                         <input type="hidden" name="idOs" id="idOs" value="<?php echo $result->idOs; ?>" />
                                         <label for="">Desconto</label>
-                                        <input style="width: 4em;" id="desconto" name="desconto" type="text" placeholder="%" maxlength="6" size="2" />
+                                        <input style="width: 4em;" id="desconto" name="desconto" type="text" placeholder="" maxlength="6" size="2" value="<?=$result->desconto ?>"/>
                                         <strong><span style="color: red" id="errorAlert"></span></strong>
                                     </div>
                                     <div class="span2">
@@ -501,6 +509,7 @@
                     <input class="span12" id="cliente" type="text" name="cliente" value="<?php echo $result->nomeCliente ?>" />
                     <input type="hidden" name="clientes_id" id="clientes_id" value="<?php echo $result->clientes_id ?>">
                     <input type="hidden" name="os_id" id="os_id" value="<?php echo $result->idOs; ?>">
+                    <input type="hidden" name="tipoDesconto" id="tipoDesconto" value="<?php echo $result->tipo_desconto; ?>">
                 </div>
             </div>
             <div class="span12" style="margin-left: 0">
@@ -556,9 +565,14 @@
 <script src="<?php echo base_url(); ?>assets/js/maskmoney.js"></script>
 
 <script type="text/javascript">
-    function calcDesconto(valor, desconto) {
-
-        var resultado = (valor - desconto * valor / 100).toFixed(2);
+    function calcDesconto(valor, desconto, tipoDesconto) {
+        var resultado = 0;
+        if (tipoDesconto == 'real') {
+            resultado = valor - desconto;
+        }
+        if (tipoDesconto == 'porcento') {
+            resultado = (valor - desconto * valor / 100).toFixed(2);
+        }
         return resultado;
     }
 
@@ -578,9 +592,13 @@
     $("#quantidade_servico").keyup(function() {
         this.value = this.value.replace(/[^0-9.]/g, '');
     });
-
+    $('#tipoDesconto').on('change', function() {
+        if (Number($("#desconto").val()) >= 0) {
+            $('#resultado').val(calcDesconto(Number($("#valorTotal").val()), Number($("#desconto").val()), $("#tipoDesconto").val()));
+            $('#resultado').val(validarDesconto(Number($('#resultado').val()), Number($("#valorTotal").val())));
+        }
+    });
     $("#desconto").keyup(function() {
-
         this.value = this.value.replace(/[^0-9.]/g, '');
         if ($('#desconto').val() > 100) {
             $('#errorAlert').text('Desconto não pode ser maior de 100%.').css("display", "inline").fadeOut(5000);
@@ -595,7 +613,7 @@
             $("#desconto").focus();
 
         } else if (Number($("#desconto").val()) >= 0) {
-            $('#resultado').val(calcDesconto(Number($("#valorTotal").val()), Number($("#desconto").val())));
+            $('#resultado').val(calcDesconto(Number($("#valorTotal").val()), Number($("#desconto").val()), $("#tipoDesconto").val()));
             $('#resultado').val(validarDesconto(Number($('#resultado').val()), Number($("#valorTotal").val())));
         } else {
             $('#errorAlert').text('Erro desconhecido.').css("display", "inline").fadeOut(5000);
@@ -930,8 +948,8 @@
                 var estoque = parseInt($("#estoque").val());
 
                 <?php if (!$configuration['control_estoque']) {
-                                                echo 'estoque = 1000000';
-                                            }; ?>
+                    echo 'estoque = 1000000';
+                }; ?>
 
                 if (estoque < quantidade) {
                     Swal.fire({

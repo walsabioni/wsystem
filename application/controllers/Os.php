@@ -872,6 +872,7 @@ class Os extends MY_Controller
         } else {
             $idOs = $this->input->post('idOs');
             $data = [
+                'tipo_desconto' => $this->input->post('tipoDesconto'),
                 'desconto' => $this->input->post('desconto'),
                 'valor_desconto' => $this->input->post('resultado')
             ];
@@ -928,6 +929,7 @@ class Os extends MY_Controller
             $data = [
                 'descricao' => set_value('descricao'),
                 'valor' => getAmount($this->input->post('valor')),
+                'tipo_desconto' => ($this->input->post('tipoDesconto')),
                 'desconto' => $os->desconto,
                 'valor_desconto' => $os->valor_desconto,
                 'clientes_id' => $this->input->post('clientes_id'),
