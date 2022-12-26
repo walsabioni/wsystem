@@ -1,6 +1,6 @@
 <div class="row-fluid">
-    <div id="footer" class="span12"> <a class="pecolor" href="https://github.com/RamonSilva20/mapos" target="_blank">
-            <?= date('Y'); ?> &copy; Ramon Silva - Map-OS - Versão:
+    <div id="footer" class="span12"> <a class="pecolor" href="https://instagram.com/wal.sabioni" target="_blank">
+            <?= date('Y'); ?> &copy; W. Sabioni - WSYSTEM - Versão:
       <?= $this->config->item('app_version'); ?></a></div>
 </div>
 <!--end-Footer-part-->
