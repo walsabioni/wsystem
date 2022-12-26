@@ -23,7 +23,7 @@
                         <div class="control-group">
                             <label for="app_name" class="control-label">Nome do Sistema</label>
                             <div class="controls">
-                                <input type="text" required name="app_name" value="<?= $configuration['app_name'] ?>">
+                                <input type="text" required name="app_name" value="WSYSTEM">
                                 <span class="help-inline">Nome do sistema</span>
                             </div>
                         </div>
