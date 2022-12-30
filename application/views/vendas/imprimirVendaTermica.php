@@ -43,7 +43,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4" style="width: 100%;">#Venda: <span>
+                                        <td colspan="4" style="width: 100%;">Emitido pelo sistema W-SYSTEM | Venda N°<span>
                                                 <?php echo $result->idVendas ?></span>
                                             <span style="padding-inline: 1em">Emissão: <?php echo date('d/m/Y'); ?></span>
                                             <?php if ($result->faturado) : ?>
