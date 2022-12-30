@@ -147,7 +147,7 @@
                         } ?>
                     </div>
                     <hr />
-                        <h5 style="text-align: left">Observações:</h5>
+                        <h5 style="text-align: left">Emitido pelo sistema W-SYSTEM</h5>
                         <table class="table">
                             <tbody>
                                 <tr>
