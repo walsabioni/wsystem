@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label for="contato" class="control-label">Contato:</label>
+                            <label for="contato" class="control-label">Rede social</label>
                             <div class="controls">
                                 <input class="contato" type="text" name="contato" value="<?php echo set_value('contato'); ?>" />
                             </div>
