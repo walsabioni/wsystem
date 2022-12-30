@@ -65,7 +65,7 @@
                             <table class="table table-bordered" style="border: 1px solid #ddd">
                                 <tbody>
                                 <tr>
-                                    <td style="text-align: right; width: 30%"><strong>Contato:</strong></td>
+                                    <td style="text-align: right; width: 30%"><strong>Rede social</strong></td>
                                     <td>
                                         <?php echo $result->contato ?>
                                     </td>
