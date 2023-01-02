@@ -30,14 +30,14 @@
             return 'Olá! Boa noite' . (empty($nome) ? '' : ', ' . $nome);
         }
     }
-$login = 'bem-vindos';
+$login = 'bem-vindo(a)';
 echo saudacao($login);
 
 // Irá retornar conforme o horário:
 ?></h1>
 
 <h2 class="h-two"> Ao Sistema de Controle de Ordens de Serviço</h2>
-    <img src="<?php echo base_url() ?>assets/img/dashboard-animate.svg" class="left-login-image" alt="Map-OS - Versão: <?= $this->config->item('app_version'); ?>">
+    <img src="<?php echo base_url() ?>assets/img/call-pdv-cliente.png" class="left-login-image" alt="Map-OS - Versão: <?= $this->config->item('app_version'); ?>">
 </div>
 <div id="loginbox">
     <form class="form-vertical" id="formLogin" method="post" action="<?= site_url('login/verificarLogin') ?>">
